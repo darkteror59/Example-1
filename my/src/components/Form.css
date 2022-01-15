@@ -1,0 +1,12 @@
+.Form_box {
+    display:flex;
+}
+.Box_title {
+    display:flex;
+}
+.Box_message {
+    display:flex;
+}
+.Box_send {
+    display:flex;
+}
