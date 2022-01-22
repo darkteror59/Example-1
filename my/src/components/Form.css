@@ -1,12 +1,47 @@
-.Form_box {
-    display:flex;
+.Form__box {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: space-evenly;
+    align-items: stretch;
+    
 }
-.Box_title {
-    display:flex;
+
+.Box__title {
+    display: flex;
 }
-.Box_message {
-    display:flex;
+
+.Box__messages {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: stretch;
+    align-content: stretch;
+    justify-content: space-evenly;
+    position: absolute;
+    
+    
 }
-.Box_send {
-    display:flex;
+
+
+.Box__send {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: stretch;
+    align-content: stretch;
+    justify-content: space-evenly;
+    position: absolute;
+    bottom: 0;
+    background-color:rgb(191, 183, 197);
+    border-radius: 20px;
+    
+    
+    
 }
+.Box__send.button {
+    background-color: rgb(163, 35, 189);
+    border-radius: 40px;
+}
+
+

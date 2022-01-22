@@ -1,47 +1,66 @@
-import React, { useState } from 'react';
+import React, { useState,useRef } from 'react';
+import './Form.css';
+import Message from './Message';
+
+
 function Form() {
-    const[countMessage, setCountMessage] = useState(0);
-    const[historiMessages, setHistoriMessages] = useState([]);
+    const [countMessage, setCountMessage] = useState(0);
+    const [historyMessages, setHistoryMessages] = useState([]);
 
-    const upCountMessage = (countMessage) => {
-        setCountMessage(countMessage + 1);
-    }
+    const inputName = useRef();
+    const inputText = useRef();
 
-    const pushhistoriMessages = (historiMessages) => {
+
+    const pushHistoryMessages = (historyMessages) => {
+
+        const name = inputName.current.value
+        const text = inputText.current.value
         const message = {
-            name: "",
-            text: "",
+            name: name,
+            text: text,
             dataTime: new Date
         }
 
-        historiMessages.push(message);
-        setCountMessage(historiMessages.length);
-        setHistoriMessages([...historiMessages]);
+        console.log(message);
+
+        inputText.current.value = null;
+
+        historyMessages.push(message);
+        setCountMessage(historyMessages.length);
+        setHistoryMessages([...historyMessages]);
     }
 
-
     return(
-         <div className="Form_box">
-            <div className="Box_title">
-               Сообщение {countMessage}
+        <div className="Form__box">
+            <div className="Box__title">
+                Сообщения {countMessage}
             </div>
-            <div className="Box_message">
-                тут будут Сообщение
+            <div className="Box__messages">
+               {historyMessages.map((message, index) => (
+                   <Message  
+                    message={message}
+                    key={'.message_' + index} />
+              
+               ))}
             </div>
-            <div className="Box_send">
-                <label >
+            <div className="Box__send">
+                <label>
                     Имя
-                <input type="text"/>
+                    <input type="text" ref={inputName} />
                 </label>
-
+                
                 <label>
                     Сообщение
-                <textarea />
+                    <textarea ref={inputText}/>
                 </label>
 
-
-             <button onClick={() => pushhistoriMessages(historiMessages)}>Добавить</button>
-             </div>
+                <button 
+                    onClick={
+                        () => pushHistoryMessages(historyMessages)
+                    }>
+                    Добавить
+                </button>
+            </div>
         </div>
     );
 }
